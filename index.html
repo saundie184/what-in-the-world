@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What in the World?</title>
+  <link rel='stylesheet' href='styles.css'>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="container">
+    <div class='row marg-top'>
+      <h1>What in the World
+        <br />
+        <small>Up-to-the-minute news stories and journalism</small>
+      </h1>
+      <hr>
+    </div>
+    <div class='row'>
+      <h2>See what the world is talking about right now!</h2>
+      <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+    </div>
+    <div class='row'>
+      <h2>Enter any word to see what's happening in the world:</h2>
+      <form class="form-inline">
+        <input type="text" class="form-control" id="Search term" placeholder="Search">
+        <button type="submit" class="btn btn-default">Go!</button>
+      </form>
+    </div>
+    <div class='row'>
+      <h2>Here's what's happening around the world with (search term):</h2>
+      <span class='searchTerm'></span>
+    </div>
+    <div class='row'>
+      <table class="table table-hover searched">
+        <tr>
+          <td id='icon'></td>
+          <td id='Title'><a id='articlelink' href='#'>Read more</a></td>
+        </tr>
+        <tr>
+          <td>icon goes here</td>
+          <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+        </tr>
+        <tr>
+          <td>icon goes here</td>
+          <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+        </tr>
+        <tr>
+          <td>icon goes here</td>
+          <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+        </tr>
+        <tr>
+          <td>icon goes here</td>
+          <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+        </tr>
+        <tr>
+          <td>icon goes here</td>
+          <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+        </tr>
+        <tr>
+          <td>icon goes here</td>
+          <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+        </tr>
+      </table>
+      <div class='row hidden currentwire'>
+        <p class="lead ">Your search term was not found in the current newswire. Try using a different search term like, "(good search)","(good search)", or "(good search)".</p>
+        <table class="table table-hover">
+          <tr>
+            <td>icon goes here</td>
+            <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+          </tr>
+          <tr>
+            <td>icon goes here</td>
+            <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+          </tr>
+          <tr>
+            <td>icon goes here</td>
+            <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+          </tr>
+          <tr>
+            <td>icon goes here</td>
+            <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+          </tr>
+          <tr>
+            <td>icon goes here</td>
+            <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+          </tr>
+          <tr>
+            <td>icon goes here</td>
+            <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+          </tr>
+          <tr>
+            <td>icon goes here</td>
+            <td>Title and teaser.. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <a href='#'>Read more</a></td>
+          </tr>
+        </table>
+      </div>
+      <img src="poweredby_nytimes_200c.png" class="img-responsive" alt="Responsive image">
+    </div>
+
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src='script.js'></script>
+</body>
+
+</html>
