@@ -5,6 +5,8 @@
 //Alchemy API key
 
 //Gather the input from the search bar and update the html
+
+
 var table = $('.searched');
 
 var goButton = $('button');
@@ -30,29 +32,32 @@ $(goButton).on('click', function(event) {
 
   //write a for loop that goes through each article that is called
   //Add the search term  and date to the URL when a user inputs the data
-
   $.ajax({
-    url: 'https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&count=10&q.enriched.url.enrichedTitle.keywords.keyword.text=' + userSearch + '&q.enriched.url.publicationDate.date=20151122T000000&return=enriched.url.url,enriched.url.publicationDate,enriched.url.title&apikey=APIKEY',
+    url: 'http://content.guardianapis.com/search?q=' + userSearch + '&api-key=APIKEY',
     method: "GET",
     success: function(data) {
       console.log(data);
       for (var i = 0; i < 10; i++) {
-        for (var i = 0; i < 10; i++) {
+        // for (var j = 0; j < 10; j++) {
 
-          var article = JSON.stringify(data['result']['docs'][i]['source']['enriched']['url']['title']);
-          var url = JSON.stringify(data['result']['docs'][i]['source']['enriched']['url']['url']);
+          var article = JSON.stringify(data['response']['results'][i]['webTitle']);
+          var url = JSON.stringify(data['response']['results'][i]['webUrl']);
+          var section = JSON.stringify(data['response']['results'][i]['sectionId']);
 
           var table = $('.searched');
           var row = $('<tr></tr>');
+          var sectionIcon = $('<td></td>');
           var cell = $('<td></td>');
           var cellLink = $('<td><a></a></td>');
           $(table).append(row);
+          $(row).append(sectionIcon);
           $(row).append(cell);
           $(row).append(cellLink);
+          sectionIcon[0].innerText = section;
           cell[0].innerText = article;
           cellLink[0].innerText = url;
         }
-      }
+      // }
 
       //create a loop that iterates through and creates a DOM node for each article
 
@@ -61,3 +66,10 @@ $(goButton).on('click', function(event) {
     }
   });
 });
+
+
+
+// url: 'https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&count=10&q.enriched.url.enrichedTitle.keywords.keyword.text=' + userSearch + '&q.enriched.url.publicationDate.date=20151122T000000&return=enriched.url.url,enriched.url.publicationDate,enriched.url.title&apikey=APIKEY',
+
+//           var article = JSON.stringify(data['result']['docs'][i]['source']['enriched']['url']['title']);
+//           var url = JSON.stringify(data['result']['docs'][i]['source']['enriched']['url']['url']);
