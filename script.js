@@ -1,48 +1,63 @@
 // alert("script.js is linked!");
 
-//set up AJAX call to get current newswire from the Times
-//limit it by the last 24 hours //---> this could change to 48 or no limit
+//create an AJAX call by plugging in
 
-//the default returned is 20, so ??
-//parse that data to pull the section
-//parse the data to pull the title, abstract, and caption from the multimedia image
+//Alchemy API key
 
+//Gather the input from the search bar and update the html
+var table = $('.searched');
 
-//Alchemy API key = 
+var goButton = $('button');
+$(goButton).on('click', function(event) {
+  event.preventDefault();
+  var userSearch = $('#searchbar').val();
+  $('#searchTerm').text("\" " + userSearch + "\" ");
+  // console.log(userSearch);
+  // make today's date into the correct format to add to the URL
 
-var sectionIcon = $('#icon');
-var $linked = $(articlelink);
-var $title = $('#Title');
+  var today = new Date();
+  var day = today.getDate();
+  var year = today.getFullYear();
+  var month = (today.getMonth()) + 1;
+  //write a function that will concatate my data
+  var dateArray = [year, month, day, 'T000000'];
+  var dateInput = dateArray.join('');
+  console.log(dateInput);
 
-$.ajax({
-  url: 'https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text=panda&return=enriched.url.url,enriched.url.title&apikey=APIKEY',
-  method: "GET",
-  success: function(data) {
-    //append values to DOM
-    var articleTitle = JSON.stringify(data['result']['docs'][0]['source']['enriched']['url']['title']);
-    var articleLink = JSON.stringify(data['result']['docs'][0]['source']['enriched']['url']['url']);
-    $title.append(articleTitle);
-    $linked.append(articleLink);
-    console.log(articleTitle + ' Read more here: ' + articleLink);
-  }
+  // var sectionIcon = $('#icon');
+  // var $linked = $(articlelink);
+  // var $title = $('#Title');
+
+  //write a for loop that goes through each article that is called
+  //Add the search term  and date to the URL when a user inputs the data
+
+  $.ajax({
+    url: 'https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&count=10&q.enriched.url.enrichedTitle.keywords.keyword.text=' + userSearch + '&q.enriched.url.publicationDate.date=20151122T000000&return=enriched.url.url,enriched.url.publicationDate,enriched.url.title&apikey=APIKEY',
+    method: "GET",
+    success: function(data) {
+      console.log(data);
+      for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
+
+          var article = JSON.stringify(data['result']['docs'][i]['source']['enriched']['url']['title']);
+          var url = JSON.stringify(data['result']['docs'][i]['source']['enriched']['url']['url']);
+
+          var table = $('.searched');
+          var row = $('<tr></tr>');
+          var cell = $('<td></td>');
+          var cellLink = $('<td><a></a></td>');
+          $(table).append(row);
+          $(row).append(cell);
+          $(row).append(cellLink);
+          cell[0].innerText = article;
+          cellLink[0].innerText = url;
+        }
+      }
+
+      //create a loop that iterates through and creates a DOM node for each article
+
+      //append values to DOM
+
+    }
+  });
 });
-
-
-
-//NYT API
-// var sectionIcon = $('#icon');
-//
-// $.ajax({
-//   url: 'http://api.nytimes.com/svc/news/v3/content/all/all/.json?api-key=API',
-//   method: "GET",
-//   success: function(data) {
-//     var section = JSON.stringify(data['results'][0]['section']);
-//     var title = JSON.stringify(data['results'][0]['title']);
-//     var abstract = JSON.stringify(data['results'][0]['abstract']);
-//     var caption = JSON.stringify(data['results'][0]['multimedia'][0]['caption']);
-//
-//     //append values to DOM
-//     sectionIcon.append(section);
-//     console.log(section, title, abstract, caption);
-//   }
-// });
