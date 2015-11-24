@@ -1,5 +1,5 @@
 .page {
-  background-color: #E3F2FD;
+  background-color: #1DE9B6;
 }
 .marg-top {
   margin-top: 3em;
@@ -16,7 +16,7 @@ hr {
   width: 75%;
 }
 .newsSection {
-  font-size: 18px;
+  font-size: 16px;
 }
 .searchfield {
   text-align: center;
@@ -27,8 +27,20 @@ margin: 0 auto;
 }
 .btn {
   margin-top: .5em;
-  font-size: 24px;
+  font-size: 24px !important;
+  color: black;
+  background-color: #FFEB3B;
+  font-style: normal;
 }
 .intro{
   text-align: center;
+}
+.text-primary {
+  color: white !important;
+}
+a {
+  color: black !important;
+}
+.searched {
+  font-size: 16px;
 }

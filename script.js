@@ -7,7 +7,12 @@ var sectionIconMap = {
   'Film': 'fa fa-video-camera',
   'Global': 'fa fa-globe',
   'Music': 'fa fa-music',
-  'Life and style': 'fa fa-heart'
+  'Life and style': 'fa fa-heart',
+  'Travel': 'fa fa-plane',
+  'Sport': 'fa fa-futbol-o',
+  'Football': 'fa fa-futbol-o',
+  'Media': 'fa fa-book'
+
 }
 
 
@@ -32,6 +37,8 @@ $(goButton).on('click', function(event) {
         var article = (data['response']['results'][i]['webTitle']);
         var url = (data['response']['results'][i]['webUrl']);
         var section = (data['response']['results'][i]['sectionName']);
+        var pubDate = (data['response']['results'][i]['webPublicationDate']).slice(0, -10);
+        console.log(pubDate);
 
         var table = $('.searched');
         var row = $('<tr></tr>');
@@ -62,6 +69,8 @@ $(goButton).on('click', function(event) {
         // }
         var cell = $('<td class=newsSection><a href= ' + url + ' >' + article + ' </a></td>');
         $(row).append(cell);
+        var date = $('<td class=newsSection>'+ pubDate + '</td>');
+        $(row).append(date);
       }
     }
   });
