@@ -1,8 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Questrial);
+
+body{
+  font-family: 'Questrial', sans-serif !important;
+}
 .marg-top {
   margin-top: 3em;
 }
 h1 {
-  font-family: Roboto, sans-serif !important;
   font-weight: bold !important;
   text-align: center;
   font-size: 48px !important;

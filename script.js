@@ -33,13 +33,13 @@ $(goButton).on('click', function(event) {
   event.preventDefault();
   $('.searched').empty();
   $('.results').empty();
+  $('.attributed').empty();
 
   var heading = $('<h2>Here\'s what\'s happening around the world with <span class=text-primary id=searchTerm></span>:</h2>');
   $('.results').append(heading);
 
   var userSearch = $('#searchbar').val();
   $('#searchTerm').text("\"" + userSearch + "\" ");
-  // console.log(userSearch);
 
   var table = $('.searched');
   var tableHead = $('<thead><tr></tr></thead>');
@@ -52,7 +52,7 @@ $(goButton).on('click', function(event) {
     method: "GET",
     success: function(data) {
       if ((data['response']['results']).length === 0) {
-        var errorRow = $('<tr><td id=errortag>Your search term was not found in any current news stories. Try using a different search term.</td></tr>');
+        var errorRow = $('<p id=errortag>Your search term was not found in any current news stories. Try using a different search term.</p>');
         $(table).append(errorRow);
       } else {
         var sectionTitle = $('<th class= headings>Section</th>');
