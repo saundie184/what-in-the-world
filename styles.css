@@ -1,12 +1,13 @@
-.page {
+/*.page {
   background-color: #1DE9B6;
-}
+}*/
 .marg-top {
   margin-top: 3em;
 }
 h1 {
   text-align: center;
   font-size: 46px !important;
+  color: #009688 !important;
 }
 hr {
   height: 2px;
@@ -36,10 +37,10 @@ margin: 0 auto;
   text-align: center;
 }
 .text-primary {
-  color: white !important;
+  color: #009688 !important;
 }
 a {
-  color: black !important;
+  color: #009688 !important;
 }
 .searched {
   font-size: 16px;

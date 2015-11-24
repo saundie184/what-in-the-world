@@ -7,11 +7,15 @@ var sectionIconMap = {
   'Film': 'fa fa-video-camera',
   'Global': 'fa fa-globe',
   'Music': 'fa fa-music',
-  'Life and style': 'fa fa-heart',
+  'Life': 'fa fa-heart',
   'Travel': 'fa fa-plane',
   'Sport': 'fa fa-futbol-o',
   'Football': 'fa fa-futbol-o',
-  'Media': 'fa fa-book'
+  'Media': 'fa fa-book',
+  'Society': 'fa fa-users',
+  'Politics': 'fa fa-university',
+  'Education': 'fa fa-graduation-cap',
+  'Fashion': 'fa fa-camera-retro'
 
 }
 
@@ -21,9 +25,21 @@ var table = $('.searched');
 var goButton = $('button');
 $(goButton).on('click', function(event) {
   event.preventDefault();
+  $('.searched').empty();
   var userSearch = $('#searchbar').val();
   $('#searchTerm').text("\" " + userSearch + "\" ");
   // console.log(userSearch);
+
+  var table = $('.searched');
+  var tableHead = $('<thead><tr></tr></thead>');
+  $(table).append(tableHead);
+
+  var sectionTitle = $('<th class=newsSection>Section</th>');
+  var articleTitle = $('<th class=newsSection>Article Title</th>');
+  var pubTitle = $('<th class=newsSection>Publication Date</th>');
+  $(tableHead).append(sectionTitle);
+  $(tableHead).append(articleTitle);
+  $(tableHead).append(pubTitle);
 
   //write a for loop that goes through each article that is called
   //Add the search term  and date to the URL when a user inputs the data
@@ -40,7 +56,6 @@ $(goButton).on('click', function(event) {
         var pubDate = (data['response']['results'][i]['webPublicationDate']).slice(0, -10);
         console.log(pubDate);
 
-        var table = $('.searched');
         var row = $('<tr></tr>');
         $(table).append(row);
 
@@ -52,26 +67,22 @@ $(goButton).on('click', function(event) {
         for (var sectionName in sectionIconMap) {
           // console.log(sectionIconMap[sectionName]);
           if (newArray.indexOf(sectionName) !== -1) {
-            var sectionIcon = $('<td class=newsSection><i class=' + "\" " + sectionIconMap[sectionName] + "\" " + '></i>' +"  "+ section + '</td>');
+            match = true;
+            var sectionIcon = $('<td class=newsSection><i class=' + "\" " + sectionIconMap[sectionName] + " fa-2x \" " + '></i>' + "  " + section + '</td>');
             $(row).append(sectionIcon);
           }
         }
-
-
-        //if else is match
-
-        // if (newArray.indexOf('Environment') !== -1) {
-        //   var sectionIcon = $('<td><i class="fa fa-briefcase"></i>' + section + '</td>');
-        //   $(row).append(sectionIcon);
-        // } else {
-        //   var sectionIcon = $('<td><i class="fa fa-bookmark"></i>' + section + '</td>');
-        //   $(row).append(sectionIcon);
-        // }
+        if (match !== true) {
+            var sectionIcon = $('<td><i class="fa fa-bookmark fa-2x"></i>' + "  " + section + '</td>');
+            $(row).append(sectionIcon);
+        }
         var cell = $('<td class=newsSection><a href= ' + url + ' >' + article + ' </a></td>');
         $(row).append(cell);
-        var date = $('<td class=newsSection>'+ pubDate + '</td>');
+        var date = $('<td class=newsSection>' + pubDate + '</td>');
         $(row).append(date);
       }
+      var guardian = $('<p class=marg-top>Content provided by <a href="http://www.theguardian.com/us">The Guardian</a></p>');
+      $(table).append(guardian);
     }
   });
 });
