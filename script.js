@@ -37,7 +37,7 @@ $(goButton).on('click', function(event) {
   $('.results').append(heading);
 
   var userSearch = $('#searchbar').val();
-  $('#searchTerm').text("\" " + userSearch + "\" ");
+  $('#searchTerm').text("\"" + userSearch + "\" ");
   // console.log(userSearch);
 
   var table = $('.searched');
@@ -67,8 +67,6 @@ $(goButton).on('click', function(event) {
           var section = (data['response']['results'][i]['sectionName']);
           if (section === 'Comment is free') {
             section = 'Opinon'
-            console.log(section);
-
           }
 
           var pubDateData = (data['response']['results'][i]['webPublicationDate']).slice(0, -10);
@@ -77,7 +75,13 @@ $(goButton).on('click', function(event) {
           nextdateArray.push(dateArray[0])
           var pubDate = nextdateArray.join('-');
 
-
+          var today = new Date();
+          var day = today.getUTCDate();
+          var month = today.getMonth() + 1;
+          var year = today.getFullYear();
+          if(pubDate === (month + "-" + day + "-" + year)){
+            pubDate = 'Today!';
+          }
 
           var row = $('<tr></tr>');
           $(table).append(row);
