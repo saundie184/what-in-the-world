@@ -18,6 +18,11 @@ hr {
 }
 .newsSection {
   font-size: 16px;
+  /*font-weight: bold;*/
+}
+.section {
+  font-size: 16px;
+  font-weight: bold;
 }
 .searchfield {
   text-align: center;
@@ -44,4 +49,16 @@ a {
 }
 .searched {
   font-size: 16px;
+}
+#errortag {
+  color: #009688 !important;
+  font-style: italic;
+}
+.fa {
+  color: #009688 !important;
+}
+.headings{
+  font-size: 21px !important;
+  /*font-weight: normal;*/
+
 }

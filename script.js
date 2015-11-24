@@ -9,16 +9,21 @@ var sectionIconMap = {
   'Music': 'fa fa-music',
   'Life': 'fa fa-heart',
   'Travel': 'fa fa-plane',
-  'Sport': 'fa fa-futbol-o',
+  'Sport': 'fa fa-trophy',
   'Football': 'fa fa-futbol-o',
   'Media': 'fa fa-book',
   'Society': 'fa fa-users',
   'Politics': 'fa fa-university',
   'Education': 'fa fa-graduation-cap',
-  'Fashion': 'fa fa-camera-retro'
+  'Fashion': 'fa fa-camera-retro',
+  'Television': 'fa fa-television',
+  'Culture': 'fa fa-flag',
+  'Books': 'fa fa-book',
+  'Art': 'fa fa-paint-brush',
+  'Network': 'fa fa-comments',
+  'Opinon': 'fa fa-bullhorn'
 
 }
-
 
 var table = $('.searched');
 
@@ -26,6 +31,11 @@ var goButton = $('button');
 $(goButton).on('click', function(event) {
   event.preventDefault();
   $('.searched').empty();
+  $('.results').empty();
+
+  var heading = $('<h2>Here\'s what\'s happening around the world with <span class=text-primary id=searchTerm></span>:</h2>')
+  $('.results').append(heading);
+
   var userSearch = $('#searchbar').val();
   $('#searchTerm').text("\" " + userSearch + "\" ");
   // console.log(userSearch);
@@ -34,57 +44,66 @@ $(goButton).on('click', function(event) {
   var tableHead = $('<thead><tr></tr></thead>');
   $(table).append(tableHead);
 
-  var sectionTitle = $('<th class=newsSection>Section</th>');
-  var articleTitle = $('<th class=newsSection>Article Title</th>');
-  var pubTitle = $('<th class=newsSection>Publication Date</th>');
-  $(tableHead).append(sectionTitle);
-  $(tableHead).append(articleTitle);
-  $(tableHead).append(pubTitle);
-
   //write a for loop that goes through each article that is called
   //Add the search term  and date to the URL when a user inputs the data
   $.ajax({
-    url: 'http://content.guardianapis.com/search?q=' + userSearch + '&order-by=newest&api-key=APIKEY',
+    url: 'http://content.guardianapis.com/search?q=' + userSearch + '&order-by=newest&api-key=',
     method: "GET",
     success: function(data) {
-      console.log(data);
-      for (var i = 0; i < 10; i++) {
+      if ((data['response']['results']).length === 0) {
+        var errorRow = $('<tr><td id=errortag>Your search term was not found in any current news stories. Try using a different search term.</td></tr>');
+        $(table).append(errorRow);
+      } else {
+        var sectionTitle = $('<th class= headings>Section</th>');
+        var articleTitle = $('<th class= headings>Article Title</th>');
+        var pubTitle = $('<th class= headings>Publication Date</th>');
+        $(tableHead).append(sectionTitle);
+        $(tableHead).append(articleTitle);
+        $(tableHead).append(pubTitle);
 
-        var article = (data['response']['results'][i]['webTitle']);
-        var url = (data['response']['results'][i]['webUrl']);
-        var section = (data['response']['results'][i]['sectionName']);
-        var pubDate = (data['response']['results'][i]['webPublicationDate']).slice(0, -10);
-        console.log(pubDate);
+        for (var i = 0; i < 10; i++) {
+          var article = (data['response']['results'][i]['webTitle']);
+          var url = (data['response']['results'][i]['webUrl']);
+          var section = (data['response']['results'][i]['sectionName']);
+          if (section === 'Comment is free') {
+            section = 'Opinon'
+            console.log(section);
 
-        var row = $('<tr></tr>');
-        $(table).append(row);
+          }
 
-        var newArray = section.split(" ");
-        var match = false;
-        // console.log(newArray);
+          var pubDateData = (data['response']['results'][i]['webPublicationDate']).slice(0, -10);
+          var dateArray = pubDateData.split('-')
+          var nextdateArray = [dateArray[1], dateArray[2]];
+          nextdateArray.push(dateArray[0])
+          var pubDate = nextdateArray.join('-');
 
-        //use a for..in to check all keys in the object and && var match;
-        for (var sectionName in sectionIconMap) {
-          // console.log(sectionIconMap[sectionName]);
-          if (newArray.indexOf(sectionName) !== -1) {
-            match = true;
-            var sectionIcon = $('<td class=newsSection><i class=' + "\" " + sectionIconMap[sectionName] + " fa-2x \" " + '></i>' + "  " + section + '</td>');
+
+
+          var row = $('<tr></tr>');
+          $(table).append(row);
+
+          var newArray = section.split(" ");
+          var match = false;
+
+          for (var sectionName in sectionIconMap) {
+            if (newArray.indexOf(sectionName) !== -1) {
+              match = true;
+              var sectionIcon = $('<td class=section><i class=' + "\" " + sectionIconMap[sectionName] + " fa-2x \" " + '></i>' + "  " + section + '</td>');
+              $(row).append(sectionIcon);
+            }
+          }
+          if (match !== true) {
+            var sectionIcon = $('<td class=section><i class="fa fa-bookmark fa-2x"></i>' + "  " + section + '</td>');
             $(row).append(sectionIcon);
           }
+          var cell = $('<td class=newsSection><a href= ' + url + ' >' + article + ' </a></td>');
+          $(row).append(cell);
+          var date = $('<td class=newsSection>' + pubDate + '</td>');
+          $(row).append(date);
         }
-        if (match !== true) {
-            var sectionIcon = $('<td><i class="fa fa-bookmark fa-2x"></i>' + "  " + section + '</td>');
-            $(row).append(sectionIcon);
-        }
-        var cell = $('<td class=newsSection><a href= ' + url + ' >' + article + ' </a></td>');
-        $(row).append(cell);
-        var date = $('<td class=newsSection>' + pubDate + '</td>');
-        $(row).append(date);
+        var guardian = $('<p class=marg-top>Content provided by <a href="http://www.theguardian.com/us">The Guardian</a></p>');
+        $(table).append(guardian);
       }
-      var guardian = $('<p class=marg-top>Content provided by <a href="http://www.theguardian.com/us">The Guardian</a></p>');
-      $(table).append(guardian);
     }
   });
 });
-
-//write a map
