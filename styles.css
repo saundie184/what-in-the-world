@@ -1,12 +1,11 @@
-/*.page {
-  background-color: #1DE9B6;
-}*/
 .marg-top {
   margin-top: 3em;
 }
 h1 {
+  font-family: Roboto, sans-serif !important;
+  font-weight: bold !important;
   text-align: center;
-  font-size: 46px !important;
+  font-size: 48px !important;
   color: #009688 !important;
 }
 hr {
@@ -28,8 +27,8 @@ hr {
   text-align: center;
 }
 #searchbar {
-width: 50%;
-margin: 0 auto;
+  width: 50%;
+  margin: 0 auto;
 }
 .btn {
   margin-top: .5em;
@@ -38,7 +37,7 @@ margin: 0 auto;
   background-color: #FFEB3B;
   font-style: normal;
 }
-.intro{
+.intro {
   text-align: center;
 }
 .text-primary {
@@ -57,8 +56,9 @@ a {
 .fa {
   color: #009688 !important;
 }
-.headings{
+.headings {
   font-size: 21px !important;
-  /*font-weight: normal;*/
-
+}
+.attributed {
+  margin-bottom: 100px !important;
 }

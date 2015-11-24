@@ -21,9 +21,10 @@ var sectionIconMap = {
   'Books': 'fa fa-book',
   'Art': 'fa fa-paint-brush',
   'Network': 'fa fa-comments',
-  'Opinon': 'fa fa-bullhorn'
+  'Opinon': 'fa fa-bullhorn',
+  'Community': 'fa fa-home'
 
-}
+};
 
 var table = $('.searched');
 
@@ -33,7 +34,7 @@ $(goButton).on('click', function(event) {
   $('.searched').empty();
   $('.results').empty();
 
-  var heading = $('<h2>Here\'s what\'s happening around the world with <span class=text-primary id=searchTerm></span>:</h2>')
+  var heading = $('<h2>Here\'s what\'s happening around the world with <span class=text-primary id=searchTerm></span>:</h2>');
   $('.results').append(heading);
 
   var userSearch = $('#searchbar').val();
@@ -66,20 +67,20 @@ $(goButton).on('click', function(event) {
           var url = (data['response']['results'][i]['webUrl']);
           var section = (data['response']['results'][i]['sectionName']);
           if (section === 'Comment is free') {
-            section = 'Opinon'
+            section = 'Opinon';
           }
 
           var pubDateData = (data['response']['results'][i]['webPublicationDate']).slice(0, -10);
-          var dateArray = pubDateData.split('-')
+          var dateArray = pubDateData.split('-');
           var nextdateArray = [dateArray[1], dateArray[2]];
-          nextdateArray.push(dateArray[0])
+          nextdateArray.push(dateArray[0]);
           var pubDate = nextdateArray.join('-');
 
           var today = new Date();
           var day = today.getUTCDate();
           var month = today.getMonth() + 1;
           var year = today.getFullYear();
-          if(pubDate === (month + "-" + day + "-" + year)){
+          if (pubDate === (month + "-" + day + "-" + year)) {
             pubDate = 'Today!';
           }
 
@@ -92,12 +93,12 @@ $(goButton).on('click', function(event) {
           for (var sectionName in sectionIconMap) {
             if (newArray.indexOf(sectionName) !== -1) {
               match = true;
-              var sectionIcon = $('<td class=section><i class=' + "\" " + sectionIconMap[sectionName] + " fa-2x \" " + '></i>' + "  " + section + '</td>');
+              var sectionIcon = $('<td><div class=row><div class=col-xs-3><i class=' + "\" " + sectionIconMap[sectionName] + " fa-2x \" " + '></i></div><div class=col-xs-9>' + section + '</div></div></td>');
               $(row).append(sectionIcon);
             }
           }
           if (match !== true) {
-            var sectionIcon = $('<td class=section><i class="fa fa-bookmark fa-2x"></i>' + "  " + section + '</td>');
+            var sectionIcon = $('<td><div class=row><div class=col-xs-3><i class="fa fa-bookmark fa-2x"></i></div><div class=col-xs-9>' + section + '</div></div></td>');
             $(row).append(sectionIcon);
           }
           var cell = $('<td class=newsSection><a href= ' + url + ' >' + article + ' </a></td>');
@@ -105,8 +106,8 @@ $(goButton).on('click', function(event) {
           var date = $('<td class=newsSection>' + pubDate + '</td>');
           $(row).append(date);
         }
-        var guardian = $('<p class=marg-top>Content provided by <a href="http://www.theguardian.com/us">The Guardian</a></p>');
-        $(table).append(guardian);
+        var guardian = $('<tr><td class=marg-top>Content provided by <a href="http://www.theguardian.com/us">The Guardian</a></td></tr>');
+        $('.attributed').append(guardian);
       }
     }
   });

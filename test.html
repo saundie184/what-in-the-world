@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What in the World?</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="page" cz-shortcut-listen="true">
+  <div class="container">
+    <div class="row marg-top">
+      <div class="col-md-12">
+        <h1>What in the World?
+          <hr>
+        </h1>
+      </div>
+    </div>
+    <div class="row intro">
+      <h2>See what the world is talking about right now!</h2>
+      <p class="lead">What do you think is making the news?
+        <br>Pick your own search term and see what stories are being talked about around the world!</p>
+    </div>
+
+    <div class="row searchfield">
+      <h2>Enter any word:</h2>
+      <form class="form-group">
+        <input type="text" class="form-control" name="Search term" id="searchbar" placeholder="Search">
+        <button type="submit" class="btn">Go!</button>
+      </form>
+      <hr>
+
+    </div>
+    <div class="row results">
+      <h2>Here's what's happening around the world with
+        <span class="text-primary" id="searchTerm">"panda" </span>:</h2>
+    </div>
+    <div class="row">
+      <table class="table marg-top table-hover searched">
+        <thead>
+          <tr></tr>
+          <!-- <th class="headings"></th> -->
+          <th class="headings">Section</th>
+          <th class="headings">Article Title</th>
+          <th class="headings">Publication Date</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class='row'>
+                <div class='col-xs-3'>
+                  <i class=" fa fa-newspaper-o fa-2x "></i>
+                </div>
+                <div class='col-xs-9'>
+                  World news
+                </div>
+              </div>
+
+            </td>
+            <!-- <td class="iconRoom"><i class=" fa fa-newspaper-o fa-2x "></i></td>
+            <td class="section">World news</td> -->
+            <td class="newsSection"><a href="http://www.theguardian.com/world/2015/nov/24/worlds-largest-animal-cloning-factory-can-save-species-says-chinese-founder">Largest animal cloning factory can save species, says Chinese founder </a></td>
+            <td class="newsSection">Today!</td>
+          </tr>
+          <!-- <tr>
+            <td class="iconRoom"><i class=" fa fa-tree fa-2x "></i></td>
+            <td class="section">Environment</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/environment/2015/nov/23/michael-rosenberg">Michael Rosenberg obituary </a></td>
+            <td class="newsSection">11-23-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-newspaper-o fa-2x "></i></td>
+            <td class="section">US news</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/us-news/2015/nov/21/red-panda-escape-search-sequoia-park-zoo-california">Escaped red panda remains free as zoo appeals for help on social media </a></td>
+            <td class="newsSection">11-21-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-video-camera fa-2x "></i></td>
+            <td class="section">Film</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/film/2015/nov/20/edgar-wright-and-david-walliams-unite-for-animated-movie-about-shadows">Edgar Wright and David Walliams unite for animated movie about shadows </a></td>
+            <td class="newsSection">11-20-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-briefcase fa-2x "></i></td>
+            <td class="section">Business</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/business/2015/nov/15/sequels-franchises-us-box-office-record">Sequels and franchises make 2015 the year of the mega-movie </a></td>
+            <td class="newsSection">11-15-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-video-camera fa-2x "></i></td>
+            <td class="section">Film</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/film/2015/nov/09/johnny-depp-to-play-sherlock-gnomes-in-animated-sequel">Johnny Depp to play Sherlock Gnomes in animated sequel </a></td>
+            <td class="newsSection">11-09-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-globe fa-2x "></i></td>
+            <td class="section">Global</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/global/2015/nov/03/weekly-notes-queries-nature-faults">Would you reproduce well in captivity? </a></td>
+            <td class="newsSection">11-03-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-music fa-2x "></i></td>
+            <td class="section">Music</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/music/2015/nov/02/deerhunter-review-all-saints-church-brighton">Deerhunter review - soaring songs, muted into an indistinct buzz </a></td>
+            <td class="newsSection">11-02-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-heart fa-2x "></i></td>
+            <td class="section">Life and style</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/lifeandstyle/the-running-blog/2015/nov/02/how-was-your-weekend-running">How was your weekend running? </a></td>
+            <td class="newsSection">11-02-2015</td>
+          </tr>
+          <tr>
+            <td class="iconRoom"><i class=" fa fa-music fa-2x "></i></td>
+            <td class="section">Music</td>
+            <td class="newsSection"><a href="http://www.theguardian.com/music/2015/oct/30/this-weeks-new-live-music">This week’s new live music </a></td>
+            <td class="newsSection">10-30-2015</td>
+          </tr> -->
+        </tbody>
+        <p class="marg-top">Content provided by <a href="http://www.theguardian.com/us">The Guardian</a></p>
+      </table>
+    </div>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+
+
+
+</body>
+
+</html>
