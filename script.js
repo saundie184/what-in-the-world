@@ -35,7 +35,7 @@ $(goButton).on('click', function(event) {
   $('.results').empty();
   $('.attributed').empty();
 
-  var heading = $('<h2>Here\'s what\'s happening around the world with <span class=text-primary id=searchTerm></span>:</h2>');
+  var heading = $('<h3>Here\'s what\'s happening around the world with <span class=text-primary id=searchTerm></span>:</h3>');
   $('.results').append(heading);
 
   var userSearch = $('#searchbar').val();
@@ -66,16 +66,17 @@ $(goButton).on('click', function(event) {
           var article = (data['response']['results'][i]['webTitle']);
           var url = (data['response']['results'][i]['webUrl']);
           var section = (data['response']['results'][i]['sectionName']);
+          //Replaced the 'Comment is free' section name
           if (section === 'Comment is free') {
             section = 'Opinon';
           }
-
+          //changed date format to be US format
           var pubDateData = (data['response']['results'][i]['webPublicationDate']).slice(0, -10);
           var dateArray = pubDateData.split('-');
           var nextdateArray = [dateArray[1], dateArray[2]];
           nextdateArray.push(dateArray[0]);
           var pubDate = nextdateArray.join('-');
-
+          //compared date format with today's date
           var today = new Date();
           var day = today.getUTCDate();
           var month = today.getMonth() + 1;
@@ -89,7 +90,7 @@ $(goButton).on('click', function(event) {
 
           var newArray = section.split(" ");
           var match = false;
-
+          //compared section name to the key in the map
           for (var sectionName in sectionIconMap) {
             if (newArray.indexOf(sectionName) !== -1) {
               match = true;

@@ -2,6 +2,8 @@
 
 body{
   font-family: 'Questrial', sans-serif !important;
+  /*update this
+  /*background: url(https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?fit=crop&fm=jpg&h=825&ixjsv=2.0.0&ixlib=rb-0.3.5&q=80&w=1450);*/
 }
 .marg-top {
   margin-top: 3em;
@@ -10,6 +12,9 @@ h1 {
   font-weight: bold !important;
   text-align: center;
   font-size: 48px !important;
+  color: #009688 !important;
+}
+h2{
   color: #009688 !important;
 }
 hr {
@@ -65,4 +70,7 @@ a {
 }
 .attributed {
   margin-bottom: 100px !important;
+}
+.splash {
+  background-color: lightgray;
 }
