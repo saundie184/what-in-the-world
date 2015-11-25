@@ -48,7 +48,7 @@ $(goButton).on('click', function(event) {
   //write a for loop that goes through each article that is called
   //Add the search term  and date to the URL when a user inputs the data
   $.ajax({
-    url: 'http://content.guardianapis.com/search?q=' + userSearch + '&order-by=newest&api-key=',
+    url: 'http://content.guardianapis.com/search?q=' + userSearch + '&order-by=newest&api-key=s9jwpzcwvmpb8uqrmyneeuur',
     method: "GET",
     success: function(data) {
       if ((data['response']['results']).length === 0) {
